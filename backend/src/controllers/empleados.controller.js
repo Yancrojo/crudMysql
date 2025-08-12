@@ -51,6 +51,8 @@ exports.remove = async (req, res) => {
   try {
     const id = Number(req.params.id);
     if (isNaN(id)) return res.status(400).json({ error: 'ID inválido' });
+    await pool.query('DELETE FROM proyect_employee WHERE id_empleados = ?', [id]);
+    await pool.query('DELETE FROM task WHERE id_empleados = ?', [id]);
     const [result] = await pool.query('DELETE FROM empleados WHERE id_empleados = ?', [id]);
     if (result.affectedRows === 0) return res.status(404).json({ error: 'No existe ese empleado' });
     res.json({ message: 'Empleado eliminado' });

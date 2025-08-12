@@ -21,3 +21,22 @@ tr:nth-child(even) {
 tr:hover {
     background-color: #f1f1f1;
 }
+
+/* SPA UI */
+.hidden { display: none; }
+.tabs a { margin-right: 12px; text-decoration: none; padding: 6px 10px; border-radius: 8px; }
+.tabs a.active { background: #efefef; }
+.card { border: 1px solid #ddd; padding: 16px; border-radius: 12px; margin: 16px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.row { display: flex; flex-direction: column; margin-bottom: 10px; max-width: 420px; }
+label { font-weight: 600; margin-bottom: 4px; }
+input[type="text"], input[type="email"], input[type="file"] { padding: 8px; border: 1px solid #ccc; border-radius: 8px; }
+button { padding: 10px 14px; border: 0; border-radius: 10px; cursor: pointer; }
+button:hover { opacity: .9; }
+.msg { margin-top: 8px; font-size: .95rem; }
+.msg.ok { color: #0a7d20; }
+.msg.error { color: #b00020; }
+.hint { color: #666; font-size: .9rem; }
+.toolbar { margin: 10px 0; }
+
+.actions { display: flex; gap: 8px; align-items: center; margin-top: 8px; }
+.btn-secondary { background: #f2f2f2; }

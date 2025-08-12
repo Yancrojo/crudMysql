@@ -1,27 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Table</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Empleados — CRUD</title>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-    <h1>Employee Information</h1>
-    <table id="employee-table">
+  <header>
+    <h1>Gestión de Empleados</h1>
+    <nav class="tabs">
+      <a href="#lista" id="tab-lista">Lista</a>
+      <a href="#agregar" id="tab-agregar">Agregar</a>
+      <a href="#importar" id="tab-importar">Importar CSV</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Vista: Lista -->
+    <section id="vista-lista" class="view">
+      <div class="toolbar">
+        <button id="btn-recargar">Recargar</button>
+      </div>
+      <table id="employee-table">
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Lastname</th>
-                <th>Email</th>
-                <th>Accion</th>
-            </tr>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Acción</th>
+          </tr>
         </thead>
-    <tbody id="employee-table-body">
-    <!-- Employee data will be populated here -->
-</tbody>
-    </table>
-    <script src="app.js"></script>
+        <tbody id="employee-table-body"></tbody>
+      </table>
+      <div id="lista-msg" class="msg"></div>
+    </section>
+
+    <!-- Vista: Agregar -->
+    <section id="vista-agregar" class="view hidden">
+      <div class="card">
+        <h2 id="form-title">Agregar empleado</h2>
+        <form id="employee-form">
+          <input type="hidden" id="emp-id" name="id" />
+          <div class="row">
+            <label for="name">Nombre</label>
+            <input id="name" name="name" type="text" required placeholder="Nombre"/>
+          </div>
+          <div class="row">
+            <label for="lastname">Apellido</label>
+            <input id="lastname" name="lastname" type="text" required placeholder="Apellido"/>
+          </div>
+          <div class="row">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="correo@dominio.com"/>
+          </div>
+          <div class="actions"><button type="submit" id="btn-save">Guardar</button> <button type="button" id="btn-cancel" class="btn-secondary hidden">Cancelar</button></div>
+          <div id="form-msg" class="msg"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Vista: Importar -->
+    <section id="vista-importar" class="view hidden">
+      <div class="card">
+        <h2>Importar empleados desde CSV</h2>
+        <form id="csv-form" enctype="multipart/form-data">
+          <div class="row">
+            <label for="file">Archivo CSV</label>
+            <input id="file" name="file" type="file" accept=".csv" required/>
+          </div>
+          <button type="submit">Subir CSV</button>
+          <p class="hint">Encabezados esperados: <code>name,lastname,email</code></p>
+          <div id="csv-msg" class="msg"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
 </body>
 </html>
